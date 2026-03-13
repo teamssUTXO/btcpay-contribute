@@ -1,5 +1,9 @@
+# NOTE: GitHub Pages does not serve custom headers from this file.
+# These headers only take effect on hosts that support _headers
+# (Cloudflare Pages, Netlify). A CSP meta tag in index.html provides
+# baseline protection regardless of hosting platform.
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://avatars.githubusercontent.com https://img.youtube.com; connect-src 'self'; frame-src https://www.youtube.com; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://avatars.githubusercontent.com https://img.youtube.com; connect-src 'self'; frame-src https://www.youtube.com; frame-ancestors 'none'
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin

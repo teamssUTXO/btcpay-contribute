@@ -10,12 +10,15 @@
     <meta property="og:title" content="BTCPay Contribute" />
     <meta property="og:description" content="Find good first issues across all BTCPay Server projects, filtered by your skills." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://contribute.btcpayserver.org" />
+    <meta property="og:url" content="https://pavle.org" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="BTCPay Contribute" />
     <meta name="twitter:description" content="Find good first issues across all BTCPay Server projects." />
+
+    <!-- CSP — GitHub Pages ignores _headers, so enforce via meta tag -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://avatars.githubusercontent.com https://img.youtube.com; connect-src 'self'; frame-src https://www.youtube.com" />
 
     <!-- Favicon -->
     <meta name="theme-color" content="#51b13e" />
