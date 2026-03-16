@@ -47,5 +47,6 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.ORG_GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add public/data/issues.json
           git commit -m "chore: refresh issues data"
+          git pull --rebase origin main
           git push
 
