@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Play, ArrowUpRight, Code2, Terminal, MonitorPlay, FlaskConical, PenLine, BookOpen, MessageSquare, FileText, Languages } from 'lucide-react'
+import { Play, ArrowUpRight, Code2, Terminal, MonitorPlay, FlaskConical, PenLine, BookOpen, MessageSquare } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { Role } from '@/types'
 
@@ -122,6 +122,13 @@ const DEV_VIDEO: VideoMeta = {
   start: 408,
 }
 
+const WRITER_VIDEO: VideoMeta = {
+  id: 'bSDROcdSSWw',
+  meta: 'Writing guide',
+  title: 'How to contribute to BTCPay Server docs',
+  ariaLabel: 'How to contribute to BTCPay Server documentation',
+}
+
 
 function ToolRow({ href, icon, label, meta }: {
   href?: string
@@ -207,25 +214,7 @@ function TesterStep4() {
   )
 }
 
-function WriterStep2() {
-  return (
-    <div className="flex flex-col gap-1.5">
-      <ToolRow href="https://github.com/btcpayserver/btcpayserver-doc/issues?q=is:open+is:issue+label:%22good+first+issue%22" icon={<BookOpen size={15} className="text-foreground" />} label="Docs repo - open good first issues" />
-      <ToolRow href="https://github.com/btcpayserver/btcpayserver-blog/issues?q=is:open+is:issue+label:%22good+first+issue%22" icon={<FileText size={15} className="text-foreground" />} label="Blog repo - open good first issues" />
-      <ToolRow href="https://docs.btcpayserver.org/Contribute/Write/" icon={<Languages size={15} className="text-foreground" />} label="Writing contribution guide" />
-    </div>
-  )
-}
 
-function WriterStep3() {
-  return (
-    <div className="flex flex-col gap-1.5">
-      <ToolRow href="https://chat.btcpayserver.org" icon={<MessageSquare size={15} className="text-foreground" />} label="Join #documentation on Mattermost" />
-      <ToolRow href="https://chat.btcpayserver.org" icon={<MattermostIcon className="w-4 h-4 text-foreground" />} label="Join #content-creation on Mattermost" />
-      <ToolRow href="https://desktop.github.com" icon={<svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-foreground" aria-hidden="true"><path fillRule="evenodd" clipRule="evenodd" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" /></svg>} label="GitHub Desktop to fork and submit PRs" />
-    </div>
-  )
-}
 
 function WriterStep4() {
   return (
@@ -312,14 +301,14 @@ const STEPS: Record<Role, StepDef[]> = {
       description: 'Understand the mission and meet the contributors who built BTCPay Server. A 42-minute film that shows why this project matters.',
     },
     {
-      label: 'Find an issue',
-      title: 'Find something to write',
-      description: 'Browse open issues in the docs and blog repos. Both repos tag writing tasks with "good first issue" to help you get started.',
+      label: 'Set up',
+      title: 'Set up your environment',
+      description: 'Learn how to fork the docs repo, edit locally, and submit a pull request. Start improving documentation step by step.',
     },
     {
       label: 'Community',
       title: 'Join the community',
-      description: 'Introduce yourself in #documentation or #content-creation on Mattermost. Ask what is most needed before you start.',
+      description: 'Introduce yourself, ask questions, and connect with contributors who have shipped real features.',
     },
     {
       label: 'Write',
@@ -336,17 +325,14 @@ function StepVisual({ role, stepIndex }: { role: Role; stepIndex: number }) {
   // Step 1 (index 0): always documentary
   if (stepIndex === 0) return <YoutubeThumbnail video={DOC_VIDEO} priority />
 
-  // Step 2 (index 1): dev/tester = dev env setup; writer = find an issue
+  // Step 2 (index 1): dev/tester = dev env setup; writer = writing guide video
   if (stepIndex === 1) {
     if (role === 'developer' || role === 'tester') return <YoutubeThumbnail video={DEV_VIDEO} />
-    if (role === 'writer') return <WriterStep2 />
+    if (role === 'writer') return <YoutubeThumbnail video={WRITER_VIDEO} />
   }
 
-  // Step 3 (index 2)
-  if (stepIndex === 2) {
-    if (role === 'developer' || role === 'tester') return <CommunityRows />
-    if (role === 'writer') return <WriterStep3 />
-  }
+  // Step 3 (index 2): same for all roles
+  if (stepIndex === 2) return <CommunityRows />
 
   // Step 4 (index 3)
   if (role === 'developer') return <DevStep4 />
@@ -393,7 +379,7 @@ function StepRow({ step, index, role }: { step: StepDef; index: number; role: Ro
           </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <YoutubeThumbnail video={DEV_VIDEO} />
+          <YoutubeThumbnail video={role === 'writer' ? WRITER_VIDEO : DEV_VIDEO} />
           <DevToolRows />
         </div>
       </div>
