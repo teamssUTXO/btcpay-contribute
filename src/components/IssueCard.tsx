@@ -1,10 +1,9 @@
-import { GitBranch, Clock } from 'lucide-react'
+import { GitBranch, GitPullRequest, Clock } from 'lucide-react'
 import type React from 'react'
 import { Badge } from '@/components/ui/badge'
 import IssueLabel from '@/components/IssueLabel'
 import type { Issue } from '@/types'
 import { cn, timeAgo, stripMarkdown } from '@/lib/utils'
-import { SKILL_META } from '@/lib/skill-map'
 
 interface IssueCardProps {
   issue:   Issue
@@ -12,8 +11,7 @@ interface IssueCardProps {
 }
 
 export default function IssueCard({ issue, onClick }: IssueCardProps) {
-  const skill = issue.skills[0]
-  const meta  = skill ? SKILL_META[skill] : null
+  const isPR = issue.type === 'pr'
 
   return (
     <button
@@ -30,9 +28,9 @@ export default function IssueCard({ issue, onClick }: IssueCardProps) {
           <GitBranch size={11} aria-hidden="true" />
           {issue.repo.name}
         </span>
-        {meta && (
-          <Badge variant="skill" className="text-[10px]">
-            <span aria-hidden="true">{meta.icon}</span> {meta.label}
+        {isPR && (
+          <Badge variant="skill" className="text-[10px] gap-1">
+            <GitPullRequest size={10} aria-hidden="true" /> PR
           </Badge>
         )}
       </div>

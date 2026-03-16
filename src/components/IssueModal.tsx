@@ -2,12 +2,10 @@ import { lazy, Suspense } from 'react'
 import { ExternalLink, MessageCircle, Clock, GitBranch } from 'lucide-react'
 const ReactMarkdown = lazy(() => import('react-markdown'))
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import IssueLabel from '@/components/IssueLabel'
 import type { Issue } from '@/types'
 import { timeAgo } from '@/lib/utils'
-import { SKILL_META } from '@/lib/skill-map'
 
 interface IssueModalProps {
   issue: Issue | null
@@ -85,23 +83,6 @@ export default function IssueModal({ issue, onClose, slideFrom }: IssueModalProp
             </div>
           </div>
 
-          {issue.skills.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 pt-4 pb-4 border-t border-border">
-              {issue.skills.map((s) => {
-                const meta = SKILL_META[s]
-                return (
-                  <Badge key={s} variant="skill">
-                    <span aria-hidden="true">{meta.icon}</span> {meta.label}
-                  </Badge>
-                )
-              })}
-              {issue.tags.map((tag) => (
-                <Badge key={tag} variant="default" className="text-xs">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          )}
 
           <div className="pt-4 border-t border-border">
             <Button size="lg" className="w-full" asChild>

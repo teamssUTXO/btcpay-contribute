@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-03-16T12:55:36.956Z",
-  "totalIssues": 14,
-  "repoCount": 5,
+  "lastUpdated": "2026-03-16T18:31:59.173Z",
+  "totalIssues": 15,
+  "repoCount": 6,
   "repos": [
     {
       "id": 100711978,
@@ -66,12 +66,57 @@
       "language": "HTML",
       "topics": [],
       "stars": 23
+    },
+    {
+      "id": 1179862494,
+      "name": "btcpay-contribute",
+      "fullName": "btcpayserver/btcpay-contribute",
+      "description": "Website that guides new contributors to contribute to Bitcoin and BTCPay Server",
+      "url": "https://github.com/btcpayserver/btcpay-contribute",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 1
     }
   ],
   "issues": [
     {
+      "id": 4084024455,
+      "number": 4,
+      "type": "issue",
+      "title": "User test the website",
+      "body": "",
+      "url": "https://github.com/btcpayserver/btcpay-contribute/issues/4",
+      "createdAt": "2026-03-16T18:13:10Z",
+      "updatedAt": "2026-03-16T18:13:15Z",
+      "commentsCount": 0,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "7057ff"
+        },
+        {
+          "name": "User testing",
+          "color": "82e5ea"
+        }
+      ],
+      "repo": {
+        "name": "btcpay-contribute",
+        "fullName": "btcpayserver/btcpay-contribute",
+        "language": "TypeScript",
+        "url": "https://github.com/btcpayserver/btcpay-contribute"
+      },
+      "assignees": [],
+      "author": {
+        "login": "pavlenex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
+        "url": "https://github.com/pavlenex"
+      }
+    },
+    {
       "id": 4081311843,
       "number": 7246,
+      "type": "issue",
       "title": "[Bug]: store dashboard: wallet balance switch broken",
       "body": "### What is your BTCPay version?\n\nBTCPay Server v2.3.6 (at least also in 2.3.5)\n\n### How did you deploy BTCPay Server?\n\ndocker\n\n### What happened?\n\nOn the store dashboard wallet balance we have a toggle between 1W 1M and 1Y. When you switch to 1W or 1Y it always shows 21. Jan, 21. Jan on the timeline. Also when you click back to 1W it does not update the screen to show March dates again but stays broken. Only reload fixes screen display.\n\nThis also happens on stores with more transactions than what I have in the screenshots below.\n\nImportant: the graphic updates just fine, only the x-axis date",
       "url": "https://github.com/btcpayserver/btcpayserver/issues/7246",
@@ -96,17 +141,12 @@
         "login": "ndeet",
         "avatarUrl": "https://avatars.githubusercontent.com/u/1136761?v=4",
         "url": "https://github.com/ndeet"
-      },
-      "skills": [
-        "developer"
-      ],
-      "tags": [
-        "C#"
-      ]
+      }
     },
     {
       "id": 4077245413,
       "number": 545,
+      "type": "issue",
       "title": "New entry submission - Way of Bitcoin",
       "body": "New submission:\n\nName: Way of Bitcoin\nUrl: https://wayofbitcoin.com\nTwitter: @alanbwt\nType: merchants\nSubType: books\nDescription: A philosophical guide to Bitcoin as a discipline and a way of life. Published by Hyperborean Press. Pay on-chain or with lightning via BTCPay Server Shopify V2.",
       "url": "https://github.com/btcpayserver/directory.btcpayserver.org/issues/545",
@@ -135,17 +175,12 @@
         "login": "alanbwt",
         "avatarUrl": "https://avatars.githubusercontent.com/u/167029568?v=4",
         "url": "https://github.com/alanbwt"
-      },
-      "skills": [
-        "developer"
-      ],
-      "tags": [
-        "TypeScript"
-      ]
+      }
     },
     {
       "id": 4067414699,
       "number": 166,
+      "type": "issue",
       "title": "[Feature] Cleanup stale unconfirmed users",
       "body": "## Description \n\nAdd a cleanup job similar to the existing stale plugin cleanup, but for users who registered and never confirmed their email.\n\nScope:\n- delete only users with `EmailConfirmed = false`\n- only delete users older than a defined threshold\n- never delete users with roles, plugin ownership, reviews, or other linked data\n- run on a schedule, like the current plugin cleanup\n- add tests for delete vs keep scenarios\n\nNote:\nAspNetUsers currently does not seem to store account creation date, so this likely needs a CreatedAt field first to define what is stale safely.",
       "url": "https://github.com/btcpayserver/btcpayserver-plugin-builder/issues/166",
@@ -170,17 +205,12 @@
         "login": "thgO-O",
         "avatarUrl": "https://avatars.githubusercontent.com/u/107907441?v=4",
         "url": "https://github.com/thgO-O"
-      },
-      "skills": [
-        "developer"
-      ],
-      "tags": [
-        "C#"
-      ]
+      }
     },
     {
       "id": 4054026700,
       "number": 542,
+      "type": "issue",
       "title": "New entry submission - MAGIC Grants",
       "body": "New submission:\n\nName: MAGIC Grants\nUrl: https://donate.magicgrants.org\nTwitter: @MagicGrants\nType: non-profits\nDescription: MAGIC Grants provides scholarships for students interested in cryptocurrencies and privacy, supports public cryptocurrency infrastructure, and promotes privacy.",
       "url": "https://github.com/btcpayserver/directory.btcpayserver.org/issues/542",
@@ -209,23 +239,18 @@
         "login": "SamsungGalaxyPlayer",
         "avatarUrl": "https://avatars.githubusercontent.com/u/12520755?v=4",
         "url": "https://github.com/SamsungGalaxyPlayer"
-      },
-      "skills": [
-        "developer"
-      ],
-      "tags": [
-        "TypeScript"
-      ]
+      }
     },
     {
       "id": 4046354134,
       "number": 163,
+      "type": "issue",
       "title": "[Feature] Add health check endpoint to Plugin Builder",
       "body": "Plugin Builder currently has no dedicated health check endpoint.\n\nSince startup depends on Postgres, Docker, and Azure Storage, it would be useful to expose a simple probe endpoint for deployments and monitoring.\n\nSuggested scope:\n- add `/health`\n- return `200 OK` when the app is ready to serve requests\n- return `503` when startup is incomplete or a critical dependency is unavailable\n- keep the check lightweight",
       "url": "https://github.com/btcpayserver/btcpayserver-plugin-builder/issues/163",
       "createdAt": "2026-03-09T15:44:59Z",
-      "updatedAt": "2026-03-12T22:50:51Z",
-      "commentsCount": 8,
+      "updatedAt": "2026-03-16T15:25:25Z",
+      "commentsCount": 9,
       "reactionCount": 0,
       "labels": [
         {
@@ -239,28 +264,17 @@
         "language": "C#",
         "url": "https://github.com/btcpayserver/btcpayserver-plugin-builder"
       },
-      "assignees": [
-        {
-          "login": "Abdullah-Albayati",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/93524185?v=4",
-          "url": "https://github.com/Abdullah-Albayati"
-        }
-      ],
+      "assignees": [],
       "author": {
         "login": "thgO-O",
         "avatarUrl": "https://avatars.githubusercontent.com/u/107907441?v=4",
         "url": "https://github.com/thgO-O"
-      },
-      "skills": [
-        "developer"
-      ],
-      "tags": [
-        "C#"
-      ]
+      }
     },
     {
       "id": 4018455059,
       "number": 160,
+      "type": "issue",
       "title": "Require Video URL filled out in order to request listing in the directory",
       "body": "Now that @teamssUTXO has [added support for a video URL](https://github.com/btcpayserver/btcpayserver-plugin-builder/pull/150), we should require all newly listed plugins to include an explainer video.\n\nIt does not need to be high production quality - even a basic screen recording of the plugin in action would go a long way in demonstrating that it deserves to be listed.\n\nThe change should be straightforward, likely just an update to this page:\n\n<img width=\"2013\" height=\"642\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/43febf2a-b6a4-481d-b8fc-446021f0f40d\" />",
       "url": "https://github.com/btcpayserver/btcpayserver-plugin-builder/issues/160",
@@ -285,17 +299,12 @@
         "login": "rockstardev",
         "avatarUrl": "https://avatars.githubusercontent.com/u/5191402?v=4",
         "url": "https://github.com/rockstardev"
-      },
-      "skills": [
-        "developer"
-      ],
-      "tags": [
-        "C#"
-      ]
+      }
     },
     {
       "id": 3974150655,
       "number": 158,
+      "type": "issue",
       "title": "Port and unify error page system from BTCPayServer (404 and 500 for start)",
       "body": "It would be great to have a default 404 error page instead of this one :\n\n<img width=\"2877\" height=\"1464\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9a35e86f-74f4-458b-9a90-a8487c8055ec\" />",
       "url": "https://github.com/btcpayserver/btcpayserver-plugin-builder/issues/158",
@@ -320,17 +329,12 @@
         "login": "teamssUTXO",
         "avatarUrl": "https://avatars.githubusercontent.com/u/183613235?v=4",
         "url": "https://github.com/teamssUTXO"
-      },
-      "skills": [
-        "developer"
-      ],
-      "tags": [
-        "C#"
-      ]
+      }
     },
     {
       "id": 3820273373,
       "number": 7109,
+      "type": "issue",
       "title": "[Feature]: Improve label system to work when we have 10+ labels",
       "body": "Now that we are integrating the label system into Payment Requests as well (https://github.com/btcpayserver/btcpayserver/pull/7050), we should improve label UX so it scales to 10, 100, or 1,000 labels.\n\nThe current wallet UI that dumps all labels into the filter dropdown will not scale:\n\nhttps://github.com/user-attachments/assets/a9de89de-b877-472e-a776-921a46da87c9\n\nFrom the video, it is clear the labels filter dropdown should never exceed page height. A good approach would be to reuse the dropdown we already use in transaction rows for applying labels:\n\n<img width=\"453\" height=\"275\" alt=\"Ima",
       "url": "https://github.com/btcpayserver/btcpayserver/issues/7109",
@@ -365,17 +369,12 @@
         "login": "rockstardev",
         "avatarUrl": "https://avatars.githubusercontent.com/u/5191402?v=4",
         "url": "https://github.com/rockstardev"
-      },
-      "skills": [
-        "developer"
-      ],
-      "tags": [
-        "C#"
-      ]
+      }
     },
     {
       "id": 3799539831,
       "number": 7092,
+      "type": "issue",
       "title": "Standardize Wallet View: Add Date Filter for Transactions",
       "body": "**Context:**\nAs mentioned in [Issue #3954](https://github.com/btcpayserver/btcpayserver/issues/3954), there is a need to standardize the Wallet view so that it offers feature parity with other views in BTCPay Server.\n\n<img width=\"2297\" height=\"262\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2e36b1fd-c0ec-42dc-b64f-48f0eabf8ed3\" />\n\n\n**Request:**\nEnhance the Wallet transaction view to allow users to filter transactions by date in the same way as the Payment Requests and Invoices views. This would help users more easily locate relevant transactions and improve consistency across",
       "url": "https://github.com/btcpayserver/btcpayserver/issues/7092",
@@ -404,17 +403,12 @@
         "login": "pavlenex",
         "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
         "url": "https://github.com/pavlenex"
-      },
-      "skills": [
-        "developer"
-      ],
-      "tags": [
-        "C#"
-      ]
+      }
     },
     {
       "id": 3799531574,
       "number": 7091,
+      "type": "issue",
       "title": "Add support for search, specifically for TX id inside the wallet view",
       "body": "As mentioned in [issue #3954](https://github.com/btcpayserver/btcpayserver/issues/3954), the wallet transactions view should be standardized line invoice or payment requests views and provide a search functionality, allowing users to immediately find a transaction based on criteria such as the transaction ID.\n\n- Implement a search bar  in the wallet transactions view so users can filter or rapidly locate transactions using their transaction ID.\n",
       "url": "https://github.com/btcpayserver/btcpayserver/issues/7091",
@@ -443,17 +437,12 @@
         "login": "pavlenex",
         "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
         "url": "https://github.com/pavlenex"
-      },
-      "skills": [
-        "developer"
-      ],
-      "tags": [
-        "C#"
-      ]
+      }
     },
     {
       "id": 3579096842,
       "number": 1531,
+      "type": "issue",
       "title": "Remove Wabisabi Plugin documentation",
       "body": "This page refers to a plugin not available anymore: https://docs.btcpayserver.org/Wabisabi\n\nAre there any plans to bring the plugin back or should this page better be removed?",
       "url": "https://github.com/btcpayserver/btcpayserver-doc/issues/1531",
@@ -478,17 +467,12 @@
         "login": "petzsch",
         "avatarUrl": "https://avatars.githubusercontent.com/u/1374810?v=4",
         "url": "https://github.com/petzsch"
-      },
-      "skills": [
-        "writer"
-      ],
-      "tags": [
-        "docs"
-      ]
+      }
     },
     {
       "id": 3051345641,
       "number": 202,
+      "type": "issue",
       "title": "Poor `Pending` status contrast in Light mode > Withdraw > Pending status",
       "body": "Good first issue for new devs wanting to contribute, pretty straightforward.\n\n<img width=\"1043\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/eda85646-eef7-4ab6-a04d-fcb5c7c56906\" />\n",
       "url": "https://github.com/btcpayserver/app/issues/202",
@@ -517,17 +501,12 @@
         "login": "pavlenex",
         "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
         "url": "https://github.com/pavlenex"
-      },
-      "skills": [
-        "developer"
-      ],
-      "tags": [
-        "HTML"
-      ]
+      }
     },
     {
       "id": 2950017622,
       "number": 169,
+      "type": "issue",
       "title": "Startup Icon Appears Low Resolution and Pixelated",
       "body": "The app's startup/splash screen icon appears in low resolution and pixelated when launching the app. \n\nIt may not be visible from the screenshot, but if  you deploy on the device, I am sure you can clearly tell.\n\n![Image](https://github.com/user-attachments/assets/105abca3-28fe-4076-928a-cb1e121ab688)",
       "url": "https://github.com/btcpayserver/app/issues/169",
@@ -566,17 +545,12 @@
         "login": "pavlenex",
         "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
         "url": "https://github.com/pavlenex"
-      },
-      "skills": [
-        "design"
-      ],
-      "tags": [
-        "design"
-      ]
+      }
     },
     {
       "id": 389532105,
       "number": 444,
+      "type": "issue",
       "title": "RTL Language Support",
       "body": "Right-to-Left languages have display issues in the checkout page. Arabic translation is available for anyone who wants to work on this issue. \r\n\r\nOpen RTL Issue to close outdated #305 \r\n",
       "url": "https://github.com/btcpayserver/btcpayserver/issues/444",
@@ -613,13 +587,141 @@
         "login": "britttttk",
         "avatarUrl": "https://avatars.githubusercontent.com/u/39231115?v=4",
         "url": "https://github.com/britttttk"
-      },
-      "skills": [
-        "writer"
+      }
+    }
+  ],
+  "testerItems": [
+    {
+      "id": 4051110731,
+      "number": 7226,
+      "type": "pr",
+      "title": "show payment method on receipt",
+      "body": "Resolve #7174 \r\n\r\n<img width=\"697\" height=\"581\" alt=\"image\" src=\"https://github.com/user-attachments/assets/9718d2e2-af0d-486c-bc76-d3feeedfe54a\" />\r\n\r\n\r\n@dstrukt  what do you think?\r\n",
+      "url": "https://github.com/btcpayserver/btcpayserver/pull/7226",
+      "createdAt": "2026-03-10T11:22:40Z",
+      "updatedAt": "2026-03-16T14:39:34Z",
+      "commentsCount": 3,
+      "reactionCount": 1,
+      "labels": [
+        {
+          "name": "User Testing",
+          "color": "F8ADDA"
+        }
       ],
-      "tags": [
-        "docs"
-      ]
+      "repo": {
+        "name": "btcpayserver",
+        "fullName": "btcpayserver/btcpayserver",
+        "language": "C#",
+        "url": "https://github.com/btcpayserver/btcpayserver"
+      },
+      "assignees": [
+        {
+          "login": "dstrukt",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/6250771?v=4",
+          "url": "https://github.com/dstrukt"
+        }
+      ],
+      "author": {
+        "login": "TChukwuleta",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/47084273?v=4",
+        "url": "https://github.com/TChukwuleta"
+      }
+    },
+    {
+      "id": 3941153156,
+      "number": 7183,
+      "type": "pr",
+      "title": "Refactor navigation: topbar global actions and unified search",
+      "body": "This PR is a prototype for #6902 \r\n\r\nhttps://github.com/user-attachments/assets/43281d64-b667-448b-ade9-29a0648a8288\r\n\r\nIt adds:\r\n\r\n- Global search (local nav index + server-backexd results).\r\n- Global top-right actions (notifications/account/server operations moved from sidebar context).\r\n- Navigation restructuring to keep store-focused items in the sidebar and global actions in the top bar.\r\n- A dismissible migration hint in the sidebar to guide users to the new top-right location for server/account navigation.\r\n- Mobile navigation adjustments, including moving store selection into the hambu",
+      "url": "https://github.com/btcpayserver/btcpayserver/pull/7183",
+      "createdAt": "2026-02-14T11:15:48Z",
+      "updatedAt": "2026-03-16T14:39:24Z",
+      "commentsCount": 3,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "User Testing",
+          "color": "F8ADDA"
+        }
+      ],
+      "repo": {
+        "name": "btcpayserver",
+        "fullName": "btcpayserver/btcpayserver",
+        "language": "C#",
+        "url": "https://github.com/btcpayserver/btcpayserver"
+      },
+      "assignees": [],
+      "author": {
+        "login": "pavlenex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
+        "url": "https://github.com/pavlenex"
+      }
+    },
+    {
+      "id": 4084024455,
+      "number": 4,
+      "type": "issue",
+      "title": "User test the website",
+      "body": "",
+      "url": "https://github.com/btcpayserver/btcpay-contribute/issues/4",
+      "createdAt": "2026-03-16T18:13:10Z",
+      "updatedAt": "2026-03-16T18:13:15Z",
+      "commentsCount": 0,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "7057ff"
+        },
+        {
+          "name": "User testing",
+          "color": "82e5ea"
+        }
+      ],
+      "repo": {
+        "name": "btcpay-contribute",
+        "fullName": "btcpayserver/btcpay-contribute",
+        "language": "TypeScript",
+        "url": "https://github.com/btcpayserver/btcpay-contribute"
+      },
+      "assignees": [],
+      "author": {
+        "login": "pavlenex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
+        "url": "https://github.com/pavlenex"
+      }
+    }
+  ],
+  "writerIssues": [
+    {
+      "id": 3579096842,
+      "number": 1531,
+      "type": "issue",
+      "title": "Remove Wabisabi Plugin documentation",
+      "body": "This page refers to a plugin not available anymore: https://docs.btcpayserver.org/Wabisabi\n\nAre there any plans to bring the plugin back or should this page better be removed?",
+      "url": "https://github.com/btcpayserver/btcpayserver-doc/issues/1531",
+      "createdAt": "2025-11-02T07:59:22Z",
+      "updatedAt": "2026-03-11T09:03:28Z",
+      "commentsCount": 1,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "19b542"
+        }
+      ],
+      "repo": {
+        "name": "btcpayserver-doc",
+        "fullName": "btcpayserver/btcpayserver-doc",
+        "language": "Shell",
+        "url": "https://github.com/btcpayserver/btcpayserver-doc"
+      },
+      "assignees": [],
+      "author": {
+        "login": "petzsch",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1374810?v=4",
+        "url": "https://github.com/petzsch"
+      }
     }
   ]
 }

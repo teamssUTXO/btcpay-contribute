@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { Play, ArrowUpRight, Code2, Terminal, MonitorPlay, FlaskConical, PenLine, BookOpen } from 'lucide-react'
+import { Play, ArrowUpRight, Code2, Terminal, MonitorPlay, FlaskConical, PenLine, BookOpen, MessageSquare, FileText, Languages } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import type { Role } from '@/types'
 
 function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null)
@@ -30,14 +31,6 @@ function MattermostIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
       <path d="M11.977 0C5.358 0 .008 5.35.008 11.97S5.358 23.94 11.978 23.94c6.618 0 11.969-5.35 11.969-11.97S18.596 0 11.977 0zm5.882 17.29c-.114.099-.276.131-.419.082l-5.47-1.764-3.674 2.672a.387.387 0 01-.606-.385l.553-5.784-5.214-2.858a.387.387 0 01.072-.71l14.476-4.365a.385.385 0 01.487.463l-2.878 12.175a.387.387 0 01-.307.474z" />
-    </svg>
-  )
-}
-
-function GitHubIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
-      <path fillRule="evenodd" clipRule="evenodd" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
     </svg>
   )
 }
@@ -118,7 +111,7 @@ const DOC_VIDEO: VideoMeta = {
   id: 'Z78ZbPcsc3g',
   meta: 'Documentary · 42 min',
   title: 'My Trust in You Is Broken',
-  ariaLabel: 'My Trust in You Is Broken — BTCPay Server documentary',
+  ariaLabel: 'My Trust in You Is Broken - BTCPay Server documentary',
 }
 
 const DEV_VIDEO: VideoMeta = {
@@ -128,6 +121,7 @@ const DEV_VIDEO: VideoMeta = {
   ariaLabel: 'BTCPay Server development environment setup tutorial',
   start: 408,
 }
+
 
 function ToolRow({ href, icon, label, meta }: {
   href?: string
@@ -166,81 +160,88 @@ function InlineLinks({ links }: { links: { href: string; label: string }[] }) {
   )
 }
 
+// ── Step visuals ──────────────────────────────────────────────────────────────
+
 function DevToolRows() {
   return (
     <div className="flex flex-col gap-1.5">
       <ToolRow
-        icon={<GitHubIcon className="w-4 h-4 text-foreground" />}
+        icon={<svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-foreground" aria-hidden="true"><path fillRule="evenodd" clipRule="evenodd" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" /></svg>}
         label="Git Client"
         meta={<InlineLinks links={[{ href: 'https://desktop.github.com', label: 'GitHub Desktop' }, { href: 'https://www.sourcetreeapp.com', label: 'SourceTree' }]} />}
       />
-      <ToolRow
-        href="https://dotnet.microsoft.com/download/dotnet/10.0"
-        icon={<Terminal size={15} className="text-foreground" />}
-        label=".NET 10.0 SDK"
-      />
-      <ToolRow
-        href="https://www.docker.com/get-started/"
-        icon={<DockerIcon className="w-4 h-4 text-foreground" />}
-        label="Docker Desktop"
-      />
-      <ToolRow
-        href="https://www.jetbrains.com/rider/"
-        icon={<Code2 size={15} className="text-foreground" />}
-        label={<>JetBrains Rider <span className="text-xs font-normal text-muted-foreground">community edition</span></>}
-      />
-      <ToolRow
-        icon={<BookOpen size={15} className="text-foreground" />}
-        label="Read the docs"
-        meta={<InlineLinks links={[{ href: 'https://desktop.github.com', label: 'Dev Docs' }, { href: 'https://www.sourcetreeapp.com', label: 'Playlist' }]} />}
-      />
+      <ToolRow href="https://dotnet.microsoft.com/download/dotnet/10.0" icon={<Terminal size={15} className="text-foreground" />} label=".NET 10.0 SDK" />
+      <ToolRow href="https://www.docker.com/get-started/" icon={<DockerIcon className="w-4 h-4 text-foreground" />} label="Docker Desktop" />
+      <ToolRow href="https://www.jetbrains.com/rider/" icon={<Code2 size={15} className="text-foreground" />} label={<>JetBrains Rider <span className="text-xs font-normal text-muted-foreground">community edition</span></>} />
+      <ToolRow icon={<BookOpen size={15} className="text-foreground" />} label="Read the docs" meta={<InlineLinks links={[{ href: 'https://docs.btcpayserver.org/Contribute/DevCode/', label: 'Dev Docs' }, { href: 'https://www.youtube.com/channel/UCpG9WL6TJuoNfFVkaDMp9ug/', label: 'Playlist' }]} />} />
     </div>
   )
 }
 
-const STEPS = [
-  {
-    label: 'Documentary',
-    title: 'Watch the documentary',
-    description: 'Understand the mission and meet the contributors who built BTCPay Server. A 42-minute film that shows why this project matters.',
-  },
-  {
-    label: 'Dev Setup',
-    title: 'Deploy a local dev environment',
-    description: '',
-  },
-  {
-    label: 'Community',
-    title: 'Join the community',
-    description: 'Introduce yourself, ask questions, and connect with contributors who have shipped real features. Everyone started exactly where you are.',
-  },
-  {
-    label: 'Find Issue',
-    title: 'Pick an issue and ship it',
-    description: 'Filter by your skill and grab a good-first-issue that fits your experience level.',
-  },
-]
-
-function StepVisual({ index }: { index: number }) {
-  if (index === 0) return <YoutubeThumbnail video={DOC_VIDEO} priority />
-
-  if (index === 1) return <YoutubeThumbnail video={DEV_VIDEO} />
-
-  if (index === 2) {
-    return (
-      <div className="flex flex-col gap-1.5">
-        <ToolRow href="https://t.me/btcpayserver" icon={<TelegramIcon className="w-4 h-4 text-foreground" />} label="Telegram" />
-        <ToolRow href="https://chat.btcpayserver.org" icon={<MattermostIcon className="w-4 h-4 text-foreground" />} label="Mattermost" />
-        <ToolRow href="https://x.com/BtcpayServer" icon={<XIcon className="w-4 h-4 text-foreground" />} label="Follow on X" />
-      </div>
-    )
-  }
-
+function CommunityRows() {
   return (
     <div className="flex flex-col gap-1.5">
-      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1">
-        When submitting a PR
-      </p>
+      <ToolRow href="https://t.me/btcpayserver" icon={<TelegramIcon className="w-4 h-4 text-foreground" />} label="Telegram" />
+      <ToolRow href="https://chat.btcpayserver.org" icon={<MattermostIcon className="w-4 h-4 text-foreground" />} label="Mattermost" />
+      <ToolRow href="https://x.com/BtcpayServer" icon={<XIcon className="w-4 h-4 text-foreground" />} label="Follow on X" />
+    </div>
+  )
+}
+
+function TesterStep4() {
+  return (
+    <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-1.5">
+        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1">Day to day</p>
+        <ToolRow href="https://github.com/btcpayserver/btcpayserver/releases" icon={<FlaskConical size={15} className="text-foreground" />} label="Try every new release as soon as it drops" />
+        <ToolRow href="https://github.com/btcpayserver/btcpayserver/issues/new/choose" icon={<PenLine size={15} className="text-foreground" />} label="Report bugs on GitHub with clear repro steps" />
+      </div>
+      <div className="flex flex-col gap-1.5">
+        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1">When testing a PR</p>
+        <ToolRow icon={<MessageSquare size={15} className="text-foreground" />} label="Leave a comment with your findings on the PR" />
+        <ToolRow icon={<MonitorPlay size={15} className="text-foreground" />} label="Record a video or provide a screenshot for context" />
+        <ToolRow icon={<PenLine size={15} className="text-foreground" />} label="Include exact steps to reproduce so the dev can follow" />
+        <ToolRow icon={<FlaskConical size={15} className="text-foreground" />} label="Approve the PR and state it has been user-tested" />
+      </div>
+    </div>
+  )
+}
+
+function WriterStep2() {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <ToolRow href="https://github.com/btcpayserver/btcpayserver-doc/issues?q=is:open+is:issue+label:%22good+first+issue%22" icon={<BookOpen size={15} className="text-foreground" />} label="Docs repo - open good first issues" />
+      <ToolRow href="https://github.com/btcpayserver/btcpayserver-blog/issues?q=is:open+is:issue+label:%22good+first+issue%22" icon={<FileText size={15} className="text-foreground" />} label="Blog repo - open good first issues" />
+      <ToolRow href="https://docs.btcpayserver.org/Contribute/Write/" icon={<Languages size={15} className="text-foreground" />} label="Writing contribution guide" />
+    </div>
+  )
+}
+
+function WriterStep3() {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <ToolRow href="https://chat.btcpayserver.org" icon={<MessageSquare size={15} className="text-foreground" />} label="Join #documentation on Mattermost" />
+      <ToolRow href="https://chat.btcpayserver.org" icon={<MattermostIcon className="w-4 h-4 text-foreground" />} label="Join #content-creation on Mattermost" />
+      <ToolRow href="https://desktop.github.com" icon={<svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-foreground" aria-hidden="true"><path fillRule="evenodd" clipRule="evenodd" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" /></svg>} label="GitHub Desktop to fork and submit PRs" />
+    </div>
+  )
+}
+
+function WriterStep4() {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1">When submitting</p>
+      <ToolRow icon={<PenLine size={15} className="text-foreground" />} label="Write in English, clear and concise" />
+      <ToolRow icon={<BookOpen size={15} className="text-foreground" />} label="Follow the existing tone and formatting style" />
+      <ToolRow icon={<MessageSquare size={15} className="text-foreground" />} label="Reference the issue you are addressing in the PR" />
+    </div>
+  )
+}
+
+function DevStep4() {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1">When submitting a PR</p>
       <ToolRow icon={<MonitorPlay size={15} className="text-foreground" />} label="Include a screen recording in description" />
       <ToolRow icon={<FlaskConical size={15} className="text-foreground" />} label="Test locally before requesting review" />
       <ToolRow icon={<PenLine size={15} className="text-foreground" />} label="Write a human-readable description" />
@@ -248,11 +249,123 @@ function StepVisual({ index }: { index: number }) {
   )
 }
 
-function StepRow({ step, index }: { step: typeof STEPS[number]; index: number }) {
+// ── Step data ────────────────────────────────────────────────────────────────
+
+interface StepDef {
+  label: string
+  title: string
+  description: string
+  cta?: { href: string; label: string }
+}
+
+const STEPS: Record<Role, StepDef[]> = {
+  developer: [
+    {
+      label: 'Documentary',
+      title: 'Watch the documentary',
+      description: 'Understand the mission and meet the contributors who built BTCPay Server. A 42-minute film that shows why this project matters.',
+    },
+    {
+      label: 'Dev Setup',
+      title: 'Deploy a local dev environment',
+      description: '',
+    },
+    {
+      label: 'Community',
+      title: 'Join the community',
+      description: 'Introduce yourself, ask questions, and connect with contributors who have shipped real features.',
+    },
+    {
+      label: 'Ship It',
+      title: 'Pick an issue and ship it',
+      description: 'Filter by your skill and grab a good-first-issue that fits your experience level.',
+      cta: { href: '#issues', label: 'Pick an issue' },
+    },
+  ],
+  tester: [
+    {
+      label: 'Documentary',
+      title: 'Watch the documentary',
+      description: 'Understand the mission and meet the contributors who built BTCPay Server. A 42-minute film that shows why this project matters.',
+    },
+    {
+      label: 'Dev Setup',
+      title: 'Deploy a local dev environment',
+      description: 'Testers need the same local setup as developers to run BTCPay and reproduce issues accurately.',
+    },
+    {
+      label: 'Community',
+      title: 'Join the community',
+      description: 'Introduce yourself, ask questions, and find out what the team is currently working on.',
+    },
+    {
+      label: 'Test',
+      title: 'Pick a PR and test it',
+      description: 'Use BTCPay Server regularly, test every new release, and report bugs. For PRs, leave a thorough comment with video and repro steps.',
+      cta: { href: '#issues', label: 'Test a PR' },
+    },
+  ],
+  writer: [
+    {
+      label: 'Documentary',
+      title: 'Watch the documentary',
+      description: 'Understand the mission and meet the contributors who built BTCPay Server. A 42-minute film that shows why this project matters.',
+    },
+    {
+      label: 'Find an issue',
+      title: 'Find something to write',
+      description: 'Browse open issues in the docs and blog repos. Both repos tag writing tasks with "good first issue" to help you get started.',
+    },
+    {
+      label: 'Community',
+      title: 'Join the community',
+      description: 'Introduce yourself in #documentation or #content-creation on Mattermost. Ask what is most needed before you start.',
+    },
+    {
+      label: 'Write',
+      title: 'Write and submit a PR',
+      description: 'Fork the repo, write your contribution, and open a pull request. Keep it focused and reference the issue you are addressing.',
+      cta: { href: '#issues', label: 'Pick an issue' },
+    },
+  ],
+}
+
+// ── Step visual resolver ─────────────────────────────────────────────────────
+
+function StepVisual({ role, stepIndex }: { role: Role; stepIndex: number }) {
+  // Step 1 (index 0): always documentary
+  if (stepIndex === 0) return <YoutubeThumbnail video={DOC_VIDEO} priority />
+
+  // Step 2 (index 1): dev/tester = dev env setup; writer = find an issue
+  if (stepIndex === 1) {
+    if (role === 'developer' || role === 'tester') return <YoutubeThumbnail video={DEV_VIDEO} />
+    if (role === 'writer') return <WriterStep2 />
+  }
+
+  // Step 3 (index 2)
+  if (stepIndex === 2) {
+    if (role === 'developer' || role === 'tester') return <CommunityRows />
+    if (role === 'writer') return <WriterStep3 />
+  }
+
+  // Step 4 (index 3)
+  if (role === 'developer') return <DevStep4 />
+  if (role === 'tester') return <TesterStep4 />
+  if (role === 'writer') return <WriterStep4 />
+
+  return null
+}
+
+// ── Step row ─────────────────────────────────────────────────────────────────
+
+function StepRow({ step, index, role }: { step: StepDef; index: number; role: Role }) {
   const { ref, visible } = useScrollReveal()
   const flip = index % 2 !== 0
 
-  if (index === 1) {
+  // Step 2 for dev/tester gets the wide two-column layout with video + tools side by side
+  const isDevSetupStep = index === 1 && (role === 'developer' || role === 'tester')
+
+  if (isDevSetupStep) {
     return (
       <div
         ref={ref}
@@ -274,6 +387,9 @@ function StepRow({ step, index }: { step: typeof STEPS[number]; index: number })
             <h3 className="font-display font-bold text-2xl sm:text-3xl text-foreground leading-tight -mt-3 sm:-mt-5">
               {step.title}
             </h3>
+            {step.description && (
+              <p className="text-muted-foreground leading-relaxed max-w-sm pt-2">{step.description}</p>
+            )}
           </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -307,13 +423,13 @@ function StepRow({ step, index }: { step: typeof STEPS[number]; index: number })
           {step.description && (
             <p className="text-muted-foreground leading-relaxed max-w-sm">{step.description}</p>
           )}
-          {index === 3 && (
+          {step.cta && (
             <div className="pt-1">
               <a
-                href="#issues"
+                href={step.cta.href}
                 className="inline-flex items-center gap-2 rounded-full px-8 h-12 text-sm font-semibold text-primary-foreground bg-primary shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:bg-primary/90 transition-all duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
-                Pick an issue
+                {step.cta.label}
               </a>
             </div>
           )}
@@ -321,34 +437,44 @@ function StepRow({ step, index }: { step: typeof STEPS[number]; index: number })
       </div>
 
       <div className={cn(flip && 'lg:order-1')}>
-        <StepVisual index={index} />
+        <StepVisual role={role} stepIndex={index} />
       </div>
     </div>
   )
 }
 
-export default function ResourcesSection() {
+// ── Section subtitles per role ───────────────────────────────────────────────
+
+const SECTION_SUB: Record<Role, string> = {
+  developer: 'New to open source? Follow these steps to land your first merged PR.',
+  tester: 'New to testing? Follow these steps to file your first quality report.',
+  writer: 'New to contributing docs or content? Follow these steps to get your first PR merged.',
+}
+
+// ── Export ───────────────────────────────────────────────────────────────────
+
+export default function ResourcesSection({ role }: { role: Role }) {
+  const steps = STEPS[role]
+
   return (
     <section id="how-it-works" aria-label="Getting started" className="border-t border-border/60">
-
       <div className="text-center pt-20 sm:pt-28 pb-6">
         <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
           How it works
         </p>
         <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-foreground">
-          Your path to first contribution
+          New here? Learn step by step
         </h2>
         <p className="mt-4 text-muted-foreground max-w-sm mx-auto text-sm sm:text-base">
-          Four steps from curious to your first merged PR.
+          {SECTION_SUB[role]}
         </p>
       </div>
 
       <div className="divide-y divide-border/60">
-        {STEPS.map((step, i) => (
-          <StepRow key={step.label} step={step} index={i} />
+        {steps.map((step, i) => (
+          <StepRow key={step.label} step={step} index={i} role={role} />
         ))}
       </div>
-
     </section>
   )
 }

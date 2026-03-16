@@ -1,6 +1,10 @@
+import { useState, useRef, useEffect } from 'react'
+import type React from 'react'
 import ThemeToggle from '@/components/ThemeToggle'
+import { Code2, FlaskConical, PenLine, ChevronDown } from 'lucide-react'
+import type { Role } from '@/types'
 
-/** BTCPay logo mark — paths extracted from directory.btcpayserver.org logo SVG */
+/** BTCPay logo mark - paths extracted from directory.btcpayserver.org logo SVG */
 function BTCPayMark({ className }: { className?: string }) {
   return (
     <svg
@@ -19,7 +23,40 @@ function BTCPayMark({ className }: { className?: string }) {
   )
 }
 
-export default function Navbar() {
+const ROLES: Role[] = ['developer', 'tester', 'writer']
+
+const ROLE_ICON: Record<Role, React.ReactElement> = {
+  developer: <Code2 size={13} />,
+  tester: <FlaskConical size={13} />,
+  writer: <PenLine size={13} />,
+}
+
+const ROLE_LABEL: Record<Role, string> = {
+  developer: 'Developer',
+  tester: 'Tester',
+  writer: 'Writer',
+}
+
+interface NavbarProps {
+  selectedRole: Role
+  onRoleSelect: (role: Role) => void
+}
+
+export default function Navbar({ selectedRole, onRoleSelect }: NavbarProps) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [open])
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/40 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center gap-6">
@@ -44,7 +81,7 @@ export default function Navbar() {
             href="#issues"
             className="px-3 py-1.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-150"
           >
-            Pick an issue
+            Contribute
           </a>
           <a
             href="#how-it-works"
@@ -55,8 +92,54 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-1.5 ml-auto">
+          <div ref={ref} className="relative hidden sm:block">
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-haspopup="listbox"
+              aria-expanded={open}
+              aria-label="Change contribution role"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <span className="text-primary">{ROLE_ICON[selectedRole]}</span>
+              {ROLE_LABEL[selectedRole]}
+              <ChevronDown
+                size={12}
+                className={`text-muted-foreground transition-transform duration-150 ${open ? 'rotate-180' : ''}`}
+              />
+            </button>
+
+            {open && (
+              <div
+                role="listbox"
+                aria-label="Select role"
+                className="absolute right-0 top-full mt-1.5 w-40 rounded-xl border border-border/60 bg-background/95 backdrop-blur-xl shadow-lg overflow-hidden"
+              >
+                {ROLES.map((role) => (
+                  <button
+                    key={role}
+                    type="button"
+                    role="option"
+                    aria-selected={role === selectedRole}
+                    onClick={() => { onRoleSelect(role); setOpen(false) }}
+                    className={`w-full flex items-center gap-2 px-3 py-2 text-sm transition-colors duration-100 hover:bg-muted ${
+                      role === selectedRole
+                        ? 'text-primary font-medium'
+                        : 'text-muted-foreground'
+                    }`}
+                  >
+                    <span className={role === selectedRole ? 'text-primary' : 'text-muted-foreground'}>
+                      {ROLE_ICON[role]}
+                    </span>
+                    {ROLE_LABEL[role]}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <a
-            href="https://github.com/btcpayserver"
+            href="https://github.com/btcpayserver/btcpay-contribute"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="BTCPay Server on GitHub"

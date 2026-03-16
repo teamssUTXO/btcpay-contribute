@@ -1,4 +1,4 @@
-export type SkillCategory = 'developer' | 'writer' | 'design' | 'marketing'
+export type Role = 'developer' | 'tester' | 'writer'
 
 export interface Repository {
   id: number
@@ -25,6 +25,7 @@ export interface IssueAuthor {
 export interface Issue {
   id: number
   number: number
+  type: 'issue' | 'pr'
   title: string
   body: string // truncated to 600 chars
   url: string
@@ -36,8 +37,6 @@ export interface Issue {
   repo: Pick<Repository, 'name' | 'fullName' | 'language' | 'url'>
   assignees: IssueAuthor[]
   author: IssueAuthor
-  skills: SkillCategory[]
-  tags: string[]
 }
 
 export interface IssuesData {
@@ -46,11 +45,10 @@ export interface IssuesData {
   repoCount: number
   repos: Repository[]
   issues: Issue[]
+  testerItems: Issue[]
+  writerIssues: Issue[]
 }
 
 export interface FilterState {
-  skill: SkillCategory | null
-  tags: string[]
-  repos: string[]
   query: string
 }

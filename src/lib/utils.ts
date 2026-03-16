@@ -15,11 +15,11 @@ export function stripMarkdown(md: string): string {
   return md
     // Collapse CRLF to spaces
     .replace(/\r\n/g, ' ')
-    // Fenced code blocks — replace with a placeholder so they don't bleed
+    // Fenced code blocks - replace with a placeholder so they don't bleed
     .replace(/```[\s\S]*?```/g, '[code]')
-    // Images ![alt](url) — keep alt text
+    // Images ![alt](url) - keep alt text
     .replace(/!\[([^\]]*)\]\([^)]*\)/g, '$1')
-    // Links [text](url) — keep text
+    // Links [text](url) - keep text
     .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
     // Bare angle-bracket URLs <https://...>
     .replace(/<https?:\/\/[^>]*>/g, '')
