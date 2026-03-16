@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-03-16T07:08:22.900Z",
-  "totalIssues": 12,
+  "lastUpdated": "2026-03-16T12:55:36.956Z",
+  "totalIssues": 14,
   "repoCount": 5,
   "repos": [
     {
@@ -65,10 +65,84 @@
       "url": "https://github.com/btcpayserver/app",
       "language": "HTML",
       "topics": [],
-      "stars": 22
+      "stars": 23
     }
   ],
   "issues": [
+    {
+      "id": 4081311843,
+      "number": 7246,
+      "title": "[Bug]: store dashboard: wallet balance switch broken",
+      "body": "### What is your BTCPay version?\n\nBTCPay Server v2.3.6 (at least also in 2.3.5)\n\n### How did you deploy BTCPay Server?\n\ndocker\n\n### What happened?\n\nOn the store dashboard wallet balance we have a toggle between 1W 1M and 1Y. When you switch to 1W or 1Y it always shows 21. Jan, 21. Jan on the timeline. Also when you click back to 1W it does not update the screen to show March dates again but stays broken. Only reload fixes screen display.\n\nThis also happens on stores with more transactions than what I have in the screenshots below.\n\nImportant: the graphic updates just fine, only the x-axis date",
+      "url": "https://github.com/btcpayserver/btcpayserver/issues/7246",
+      "createdAt": "2026-03-16T09:34:18Z",
+      "updatedAt": "2026-03-16T10:17:27Z",
+      "commentsCount": 1,
+      "reactionCount": 2,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "3de570"
+        }
+      ],
+      "repo": {
+        "name": "btcpayserver",
+        "fullName": "btcpayserver/btcpayserver",
+        "language": "C#",
+        "url": "https://github.com/btcpayserver/btcpayserver"
+      },
+      "assignees": [],
+      "author": {
+        "login": "ndeet",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/1136761?v=4",
+        "url": "https://github.com/ndeet"
+      },
+      "skills": [
+        "developer"
+      ],
+      "tags": [
+        "C#"
+      ]
+    },
+    {
+      "id": 4077245413,
+      "number": 545,
+      "title": "New entry submission - Way of Bitcoin",
+      "body": "New submission:\n\nName: Way of Bitcoin\nUrl: https://wayofbitcoin.com\nTwitter: @alanbwt\nType: merchants\nSubType: books\nDescription: A philosophical guide to Bitcoin as a discipline and a way of life. Published by Hyperborean Press. Pay on-chain or with lightning via BTCPay Server Shopify V2.",
+      "url": "https://github.com/btcpayserver/directory.btcpayserver.org/issues/545",
+      "createdAt": "2026-03-15T01:04:13Z",
+      "updatedAt": "2026-03-16T10:02:32Z",
+      "commentsCount": 0,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "7057ff"
+        },
+        {
+          "name": "Submission-approved",
+          "color": "4ddd60"
+        }
+      ],
+      "repo": {
+        "name": "directory.btcpayserver.org",
+        "fullName": "btcpayserver/directory.btcpayserver.org",
+        "language": "TypeScript",
+        "url": "https://github.com/btcpayserver/directory.btcpayserver.org"
+      },
+      "assignees": [],
+      "author": {
+        "login": "alanbwt",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/167029568?v=4",
+        "url": "https://github.com/alanbwt"
+      },
+      "skills": [
+        "developer"
+      ],
+      "tags": [
+        "TypeScript"
+      ]
+    },
     {
       "id": 4067414699,
       "number": 166,
