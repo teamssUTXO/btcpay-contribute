@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-03-18T01:29:49.361Z",
-  "totalIssues": 15,
+  "lastUpdated": "2026-03-18T12:55:48.257Z",
+  "totalIssues": 20,
   "repoCount": 6,
   "repos": [
     {
@@ -20,7 +20,7 @@
         "point-of-sale",
         "selfhosted"
       ],
-      "stars": 7450
+      "stars": 7451
     },
     {
       "id": 101657836,
@@ -79,6 +79,156 @@
     }
   ],
   "issues": [
+    {
+      "id": 4094633628,
+      "number": 1564,
+      "type": "issue",
+      "title": "Create a dedicated `Plugins` page dedicated to user docs",
+      "body": "Currently, the user documentation lists many plugins in the sidebar, but there is no dedicated Plugins page that serves as a proper introduction for end users.\n\nWe do have a developer-focused page at https://docs.btcpayserver.org/Development/Plugins/, but regular BTCPay Server users are not clearly introduced to plugins from a user perspective.\n\nThe goal of this issue is to create a clear first introduction point for plugins in the user documentation, so users better understand what plugins are, how they become available, and how they can expand BTCPay Server functionality.\n\nA dedicated user-f",
+      "url": "https://github.com/btcpayserver/btcpayserver-doc/issues/1564",
+      "createdAt": "2026-03-18T11:52:57Z",
+      "updatedAt": "2026-03-18T11:53:57Z",
+      "commentsCount": 0,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "19b542"
+        }
+      ],
+      "repo": {
+        "name": "btcpayserver-doc",
+        "fullName": "btcpayserver/btcpayserver-doc",
+        "language": "Shell",
+        "url": "https://github.com/btcpayserver/btcpayserver-doc"
+      },
+      "assignees": [],
+      "author": {
+        "login": "pavlenex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
+        "url": "https://github.com/pavlenex"
+      }
+    },
+    {
+      "id": 4094557825,
+      "number": 1563,
+      "type": "issue",
+      "title": "Update `WhatsNext`page for core plugin terminology changes",
+      "body": "The https://docs.btcpayserver.org/WhatsNext/ page needs to be updated to reflect the removal of the distinction between Apps and Plugins.\n\nAs explained in issue #1559, BTCPay Server no longer separates Apps and Plugins. What used to be called apps are now core system plugins. From the user’s perspective, features such as Point of Sale and Crowdfunding are now presented as plugins in the sidebar.\nT\nhe goal of this task is straightforward: remove references to apps and make sure the page consistently refers to Crowdfunding, Point of Sale, and Pay Button as plugins, within the plugins section.\n\nT",
+      "url": "https://github.com/btcpayserver/btcpayserver-doc/issues/1563",
+      "createdAt": "2026-03-18T11:40:02Z",
+      "updatedAt": "2026-03-18T11:40:02Z",
+      "commentsCount": 0,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "19b542"
+        }
+      ],
+      "repo": {
+        "name": "btcpayserver-doc",
+        "fullName": "btcpayserver/btcpayserver-doc",
+        "language": "Shell",
+        "url": "https://github.com/btcpayserver/btcpayserver-doc"
+      },
+      "assignees": [],
+      "author": {
+        "login": "pavlenex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
+        "url": "https://github.com/pavlenex"
+      }
+    },
+    {
+      "id": 4094456835,
+      "number": 1561,
+      "type": "issue",
+      "title": "Register account page contains create a store steps",
+      "body": "The current documentation around account registration and store creation needs cleanup.\nRight now, https://docs.btcpayserver.org/RegisterAccount/ includes steps for creating a store, while https://docs.btcpayserver.org/CreateStore/ covers the same topic with less detail.\nA good refactor would take one of these two approaches:\n\n1. Combine “Register Account” and “Create a Store” into a single page if it makes more sense as one continuous onboarding step.\n2. Keep them as separate pages, but make each page focus only on its own step, with a clear link or prompt at the end guiding the user to the n",
+      "url": "https://github.com/btcpayserver/btcpayserver-doc/issues/1561",
+      "createdAt": "2026-03-18T11:21:31Z",
+      "updatedAt": "2026-03-18T11:21:31Z",
+      "commentsCount": 0,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "19b542"
+        }
+      ],
+      "repo": {
+        "name": "btcpayserver-doc",
+        "fullName": "btcpayserver/btcpayserver-doc",
+        "language": "Shell",
+        "url": "https://github.com/btcpayserver/btcpayserver-doc"
+      },
+      "assignees": [],
+      "author": {
+        "login": "pavlenex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
+        "url": "https://github.com/pavlenex"
+      }
+    },
+    {
+      "id": 4094421272,
+      "number": 1560,
+      "type": "issue",
+      "title": "Update outdated link to third party hosts on `Register Account page`",
+      "body": "<img width=\"719\" height=\"306\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2365f2c5-18e2-4fb9-924e-f8391fd8d841\" />\n\nLink here https://docs.btcpayserver.org/RegisterAccount/  for third party hosts leads to https://directory.btcpayserver.org/filter/hosts instead of https://directory.btcpayserver.org/#type=Hosted+BTCPay\n\nThis is pretty trivial issue to tackle, feel free to comment below if you want to work on it.\n",
+      "url": "https://github.com/btcpayserver/btcpayserver-doc/issues/1560",
+      "createdAt": "2026-03-18T11:14:31Z",
+      "updatedAt": "2026-03-18T11:14:31Z",
+      "commentsCount": 0,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "19b542"
+        }
+      ],
+      "repo": {
+        "name": "btcpayserver-doc",
+        "fullName": "btcpayserver/btcpayserver-doc",
+        "language": "Shell",
+        "url": "https://github.com/btcpayserver/btcpayserver-doc"
+      },
+      "assignees": [],
+      "author": {
+        "login": "pavlenex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
+        "url": "https://github.com/pavlenex"
+      }
+    },
+    {
+      "id": 4094406425,
+      "number": 1559,
+      "type": "issue",
+      "title": "Refactor walkthrough.md - remove mentions of apps and unify plugins terminology",
+      "body": "Our documentation at https://docs.btcpayserver.org/Walkthrough is slightly outdated.\n\nThe goal of that page is to walk users through each item in the sidebar in the order it appears, give a short explanation of what it does, and link to a dedicated page where they can learn more about that feature.\nHere’s the proposed approach for refactoring this page:\n\n1. Set up a local BTCPay Server instance if you do not already have access to a server with admin permissions. This is important because some sidebar features are only visible to admins. We should also highlight this in the documentation, sinc",
+      "url": "https://github.com/btcpayserver/btcpayserver-doc/issues/1559",
+      "createdAt": "2026-03-18T11:11:36Z",
+      "updatedAt": "2026-03-18T11:11:36Z",
+      "commentsCount": 0,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "19b542"
+        }
+      ],
+      "repo": {
+        "name": "btcpayserver-doc",
+        "fullName": "btcpayserver/btcpayserver-doc",
+        "language": "Shell",
+        "url": "https://github.com/btcpayserver/btcpayserver-doc"
+      },
+      "assignees": [],
+      "author": {
+        "login": "pavlenex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
+        "url": "https://github.com/pavlenex"
+      }
+    },
     {
       "id": 4084024455,
       "number": 4,
@@ -601,7 +751,7 @@
       "createdAt": "2026-03-17T09:31:07Z",
       "updatedAt": "2026-03-17T10:16:12Z",
       "commentsCount": 1,
-      "reactionCount": 0,
+      "reactionCount": 1,
       "labels": [
         {
           "name": "User Testing",
@@ -718,6 +868,36 @@
       }
     },
     {
+      "id": 3825231620,
+      "number": 7113,
+      "type": "pr",
+      "title": "UI: clarify LND seed recovery expectations",
+      "body": "Fixes #5612.\n\nClarifies the LND Seed Backup page copy to set correct expectations for recovery steps under some deployments (e.g. BTCPay Server Docker), where LND may be initialized/unlocked automatically and recovery may require an interactive shell (TTY) and temporarily disabling automatic init/unlock.\n\nChanges:\n- Add a short clarification paragraph on the LND Seed Backup page.\n- Add the new string to Translations.Default.cs for localization support.\n\nHow to verify:\n- Server → Services → LND Seed Backup: confirm the new paragraph appears above the link to LND's recovery documentation.\n\nNote:",
+      "url": "https://github.com/btcpayserver/btcpayserver/pull/7113",
+      "createdAt": "2026-01-17T13:58:16Z",
+      "updatedAt": "2026-03-18T11:56:20Z",
+      "commentsCount": 6,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "User Testing",
+          "color": "F8ADDA"
+        }
+      ],
+      "repo": {
+        "name": "btcpayserver",
+        "fullName": "btcpayserver/btcpayserver",
+        "language": "C#",
+        "url": "https://github.com/btcpayserver/btcpayserver"
+      },
+      "assignees": [],
+      "author": {
+        "login": "esixce",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/98708432?v=4",
+        "url": "https://github.com/esixce"
+      }
+    },
+    {
       "id": 4084024455,
       "number": 4,
       "type": "issue",
@@ -753,6 +933,156 @@
     }
   ],
   "writerIssues": [
+    {
+      "id": 4094633628,
+      "number": 1564,
+      "type": "issue",
+      "title": "Create a dedicated `Plugins` page dedicated to user docs",
+      "body": "Currently, the user documentation lists many plugins in the sidebar, but there is no dedicated Plugins page that serves as a proper introduction for end users.\n\nWe do have a developer-focused page at https://docs.btcpayserver.org/Development/Plugins/, but regular BTCPay Server users are not clearly introduced to plugins from a user perspective.\n\nThe goal of this issue is to create a clear first introduction point for plugins in the user documentation, so users better understand what plugins are, how they become available, and how they can expand BTCPay Server functionality.\n\nA dedicated user-f",
+      "url": "https://github.com/btcpayserver/btcpayserver-doc/issues/1564",
+      "createdAt": "2026-03-18T11:52:57Z",
+      "updatedAt": "2026-03-18T11:53:57Z",
+      "commentsCount": 0,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "19b542"
+        }
+      ],
+      "repo": {
+        "name": "btcpayserver-doc",
+        "fullName": "btcpayserver/btcpayserver-doc",
+        "language": "Shell",
+        "url": "https://github.com/btcpayserver/btcpayserver-doc"
+      },
+      "assignees": [],
+      "author": {
+        "login": "pavlenex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
+        "url": "https://github.com/pavlenex"
+      }
+    },
+    {
+      "id": 4094557825,
+      "number": 1563,
+      "type": "issue",
+      "title": "Update `WhatsNext`page for core plugin terminology changes",
+      "body": "The https://docs.btcpayserver.org/WhatsNext/ page needs to be updated to reflect the removal of the distinction between Apps and Plugins.\n\nAs explained in issue #1559, BTCPay Server no longer separates Apps and Plugins. What used to be called apps are now core system plugins. From the user’s perspective, features such as Point of Sale and Crowdfunding are now presented as plugins in the sidebar.\nT\nhe goal of this task is straightforward: remove references to apps and make sure the page consistently refers to Crowdfunding, Point of Sale, and Pay Button as plugins, within the plugins section.\n\nT",
+      "url": "https://github.com/btcpayserver/btcpayserver-doc/issues/1563",
+      "createdAt": "2026-03-18T11:40:02Z",
+      "updatedAt": "2026-03-18T11:40:02Z",
+      "commentsCount": 0,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "19b542"
+        }
+      ],
+      "repo": {
+        "name": "btcpayserver-doc",
+        "fullName": "btcpayserver/btcpayserver-doc",
+        "language": "Shell",
+        "url": "https://github.com/btcpayserver/btcpayserver-doc"
+      },
+      "assignees": [],
+      "author": {
+        "login": "pavlenex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
+        "url": "https://github.com/pavlenex"
+      }
+    },
+    {
+      "id": 4094456835,
+      "number": 1561,
+      "type": "issue",
+      "title": "Register account page contains create a store steps",
+      "body": "The current documentation around account registration and store creation needs cleanup.\nRight now, https://docs.btcpayserver.org/RegisterAccount/ includes steps for creating a store, while https://docs.btcpayserver.org/CreateStore/ covers the same topic with less detail.\nA good refactor would take one of these two approaches:\n\n1. Combine “Register Account” and “Create a Store” into a single page if it makes more sense as one continuous onboarding step.\n2. Keep them as separate pages, but make each page focus only on its own step, with a clear link or prompt at the end guiding the user to the n",
+      "url": "https://github.com/btcpayserver/btcpayserver-doc/issues/1561",
+      "createdAt": "2026-03-18T11:21:31Z",
+      "updatedAt": "2026-03-18T11:21:31Z",
+      "commentsCount": 0,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "19b542"
+        }
+      ],
+      "repo": {
+        "name": "btcpayserver-doc",
+        "fullName": "btcpayserver/btcpayserver-doc",
+        "language": "Shell",
+        "url": "https://github.com/btcpayserver/btcpayserver-doc"
+      },
+      "assignees": [],
+      "author": {
+        "login": "pavlenex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
+        "url": "https://github.com/pavlenex"
+      }
+    },
+    {
+      "id": 4094421272,
+      "number": 1560,
+      "type": "issue",
+      "title": "Update outdated link to third party hosts on `Register Account page`",
+      "body": "<img width=\"719\" height=\"306\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2365f2c5-18e2-4fb9-924e-f8391fd8d841\" />\n\nLink here https://docs.btcpayserver.org/RegisterAccount/  for third party hosts leads to https://directory.btcpayserver.org/filter/hosts instead of https://directory.btcpayserver.org/#type=Hosted+BTCPay\n\nThis is pretty trivial issue to tackle, feel free to comment below if you want to work on it.\n",
+      "url": "https://github.com/btcpayserver/btcpayserver-doc/issues/1560",
+      "createdAt": "2026-03-18T11:14:31Z",
+      "updatedAt": "2026-03-18T11:14:31Z",
+      "commentsCount": 0,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "19b542"
+        }
+      ],
+      "repo": {
+        "name": "btcpayserver-doc",
+        "fullName": "btcpayserver/btcpayserver-doc",
+        "language": "Shell",
+        "url": "https://github.com/btcpayserver/btcpayserver-doc"
+      },
+      "assignees": [],
+      "author": {
+        "login": "pavlenex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
+        "url": "https://github.com/pavlenex"
+      }
+    },
+    {
+      "id": 4094406425,
+      "number": 1559,
+      "type": "issue",
+      "title": "Refactor walkthrough.md - remove mentions of apps and unify plugins terminology",
+      "body": "Our documentation at https://docs.btcpayserver.org/Walkthrough is slightly outdated.\n\nThe goal of that page is to walk users through each item in the sidebar in the order it appears, give a short explanation of what it does, and link to a dedicated page where they can learn more about that feature.\nHere’s the proposed approach for refactoring this page:\n\n1. Set up a local BTCPay Server instance if you do not already have access to a server with admin permissions. This is important because some sidebar features are only visible to admins. We should also highlight this in the documentation, sinc",
+      "url": "https://github.com/btcpayserver/btcpayserver-doc/issues/1559",
+      "createdAt": "2026-03-18T11:11:36Z",
+      "updatedAt": "2026-03-18T11:11:36Z",
+      "commentsCount": 0,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "19b542"
+        }
+      ],
+      "repo": {
+        "name": "btcpayserver-doc",
+        "fullName": "btcpayserver/btcpayserver-doc",
+        "language": "Shell",
+        "url": "https://github.com/btcpayserver/btcpayserver-doc"
+      },
+      "assignees": [],
+      "author": {
+        "login": "pavlenex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
+        "url": "https://github.com/pavlenex"
+      }
+    },
     {
       "id": 3579096842,
       "number": 1531,
