@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-03-18T18:52:07.097Z",
-  "totalIssues": 17,
+  "lastUpdated": "2026-03-19T01:30:40.875Z",
+  "totalIssues": 18,
   "repoCount": 6,
   "repos": [
     {
@@ -79,6 +79,74 @@
     }
   ],
   "issues": [
+    {
+      "id": 4096797025,
+      "number": 549,
+      "type": "issue",
+      "title": "New entry submission - Paco de la India",
+      "body": "New submission:\n\nName: Paco de la India\nUrl: https://pacodelaindia.com/\nType: merchants\nSubType: books\nDescription: A 2-Year Journey Across 42 Countries over 800 days using bitcoin. The book is a tell-all covering paco journey ",
+      "url": "https://github.com/btcpayserver/directory.btcpayserver.org/issues/549",
+      "createdAt": "2026-03-18T17:50:32Z",
+      "updatedAt": "2026-03-18T19:36:20Z",
+      "commentsCount": 0,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "7057ff"
+        },
+        {
+          "name": "Submission-approved",
+          "color": "4ddd60"
+        }
+      ],
+      "repo": {
+        "name": "directory.btcpayserver.org",
+        "fullName": "btcpayserver/directory.btcpayserver.org",
+        "language": "TypeScript",
+        "url": "https://github.com/btcpayserver/directory.btcpayserver.org"
+      },
+      "assignees": [],
+      "author": {
+        "login": "Abhijay007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/64387054?v=4",
+        "url": "https://github.com/Abhijay007"
+      }
+    },
+    {
+      "id": 4096666216,
+      "number": 548,
+      "type": "issue",
+      "title": "New entry submission - Bitasha",
+      "body": "New submission:\n\nName: Bitasha\nUrl: https://bitasha.com/\nType: merchants\nSubType: electronics\nDescription: Bitasha is a open Source Bitcoin ASIC Home Miner which is built by Indians for India",
+      "url": "https://github.com/btcpayserver/directory.btcpayserver.org/issues/548",
+      "createdAt": "2026-03-18T17:31:00Z",
+      "updatedAt": "2026-03-18T19:36:19Z",
+      "commentsCount": 0,
+      "reactionCount": 0,
+      "labels": [
+        {
+          "name": "good first issue",
+          "color": "7057ff"
+        },
+        {
+          "name": "Submission-approved",
+          "color": "4ddd60"
+        }
+      ],
+      "repo": {
+        "name": "directory.btcpayserver.org",
+        "fullName": "btcpayserver/directory.btcpayserver.org",
+        "language": "TypeScript",
+        "url": "https://github.com/btcpayserver/directory.btcpayserver.org"
+      },
+      "assignees": [],
+      "author": {
+        "login": "Abhijay007",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/64387054?v=4",
+        "url": "https://github.com/Abhijay007"
+      }
+    },
     {
       "id": 4094633628,
       "number": 1564,
@@ -362,36 +430,6 @@
       }
     },
     {
-      "id": 4018455059,
-      "number": 160,
-      "type": "issue",
-      "title": "Require Video URL filled out in order to request listing in the directory",
-      "body": "Now that @teamssUTXO has [added support for a video URL](https://github.com/btcpayserver/btcpayserver-plugin-builder/pull/150), we should require all newly listed plugins to include an explainer video.\n\nIt does not need to be high production quality - even a basic screen recording of the plugin in action would go a long way in demonstrating that it deserves to be listed.\n\nThe change should be straightforward, likely just an update to this page:\n\n<img width=\"2013\" height=\"642\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/43febf2a-b6a4-481d-b8fc-446021f0f40d\" />",
-      "url": "https://github.com/btcpayserver/btcpayserver-plugin-builder/issues/160",
-      "createdAt": "2026-03-03T20:01:10Z",
-      "updatedAt": "2026-03-03T20:01:43Z",
-      "commentsCount": 1,
-      "reactionCount": 1,
-      "labels": [
-        {
-          "name": "good first issue",
-          "color": "7057ff"
-        }
-      ],
-      "repo": {
-        "name": "btcpayserver-plugin-builder",
-        "fullName": "btcpayserver/btcpayserver-plugin-builder",
-        "language": "C#",
-        "url": "https://github.com/btcpayserver/btcpayserver-plugin-builder"
-      },
-      "assignees": [],
-      "author": {
-        "login": "rockstardev",
-        "avatarUrl": "https://avatars.githubusercontent.com/u/5191402?v=4",
-        "url": "https://github.com/rockstardev"
-      }
-    },
-    {
       "id": 3974150655,
       "number": 158,
       "type": "issue",
@@ -649,8 +687,8 @@
       "body": "closes #7246 \r\n\r\n\r\nhttps://github.com/user-attachments/assets/fdda35d0-e20e-4aed-b575-535868b2547b\r\n\r\n\r\n",
       "url": "https://github.com/btcpayserver/btcpayserver/pull/7247",
       "createdAt": "2026-03-17T09:31:07Z",
-      "updatedAt": "2026-03-18T16:18:01Z",
-      "commentsCount": 3,
+      "updatedAt": "2026-03-18T18:57:10Z",
+      "commentsCount": 5,
       "reactionCount": 1,
       "labels": [
         {
