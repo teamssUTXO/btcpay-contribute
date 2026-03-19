@@ -59,6 +59,7 @@ export default function IssueModal({ issue, onClose, slideFrom }: IssueModalProp
               <a
                 href={issue.author.url}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="font-medium hover:text-primary transition-colors"
               >
                 {issue.author.login}
