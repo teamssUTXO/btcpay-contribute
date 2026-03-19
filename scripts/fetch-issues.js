@@ -23,9 +23,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const ORG             = 'btcpayserver'
 const LABEL           = 'good first issue'
-const TESTER_LABEL    = 'User Testing'
-const WRITER_REPOS    = ['btcpayserver-doc', 'btcpayserver-blog']
-const COPYWRITING_LABEL = 'copywriting'
+const TESTER_LABEL_RE = /user[-\s]testing/i
+const TESTER_LABELS   = ['User Testing', 'User-Testing']
+const WRITER_REPOS    = ['btcpayserver-doc', 'blog']
 const OUT             = resolve(__dirname, '../public/data/issues.json')
 const BODY_MAX        = 600
 
@@ -70,6 +70,8 @@ async function main() {
       for (const raw of data) {
         // Skip pull requests (GitHub returns PRs in issue list)
         if (raw.pull_request) continue
+        // Skip items also labeled with a user-testing variant (they belong in tester tab)
+        if (raw.labels.some((l) => typeof l === 'object' && TESTER_LABEL_RE.test(l.name ?? ''))) continue
 
         issues.push({
           id:            raw.id,
@@ -112,65 +114,58 @@ async function main() {
   // ── 3. Sort by creation date desc ─────────────────────────────────────────
   issues.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
 
-  // ── 3b. Fetch tester items: open PRs + "User Testing" issues ──────────────
+  // ── 3b. Fetch tester items: "User Testing" label variants via search ────────
   /** @type {any[]} */
   const testerItems = []
+  const seenTesterIds = new Set()
 
-  // PRs and issues labeled "User Testing" across all org repos
-  console.log(`Fetching "${TESTER_LABEL}" items across org`)
-  for (const repo of repos) {
-    let page = 1
-    while (true) {
-      const { data } = await octokit.rest.issues.listForRepo({
-        owner:    ORG,
-        repo:     repo.name,
-        labels:   TESTER_LABEL,
-        state:    'open',
-        per_page: 100,
-        page,
+  for (const label of TESTER_LABELS) {
+    console.log(`Fetching "${label}" items via search`)
+    const results = await octokit.paginate(octokit.rest.search.issuesAndPullRequests, {
+      q: `org:${ORG} is:open label:"${label}"`,
+      per_page: 100,
+    })
+    for (const raw of results) {
+      if (seenTesterIds.has(raw.id)) continue
+      seenTesterIds.add(raw.id)
+      const isPR = !!raw.pull_request
+      const repoName = raw.repository_url.split('/').pop() ?? ''
+      const repo = repos.find((r) => r.name === repoName)
+      if (!repo) continue
+      testerItems.push({
+        id:            raw.id,
+        number:        raw.number,
+        type:          isPR ? 'pr' : 'issue',
+        title:         raw.title,
+        body:          (raw.body ?? '').slice(0, BODY_MAX),
+        url:           raw.html_url,
+        createdAt:     raw.created_at,
+        updatedAt:     raw.updated_at ?? raw.created_at,
+        commentsCount: raw.comments,
+        reactionCount: raw.reactions?.total_count ?? 0,
+        labels:        raw.labels
+          .filter((l) => typeof l === 'object')
+          .map((l) => ({ name: l.name ?? '', color: l.color ?? '888888' })),
+        repo: {
+          name:     repo.name,
+          fullName: repo.full_name,
+          language: repo.language ?? null,
+          url:      repo.html_url,
+        },
+        assignees: (raw.assignees ?? []).map((a) => ({
+          login:     a.login,
+          avatarUrl: a.avatar_url,
+          url:       a.html_url,
+        })),
+        author: {
+          login:     raw.user?.login ?? 'unknown',
+          avatarUrl: raw.user?.avatar_url ?? '',
+          url:       raw.user?.html_url ?? '',
+        },
       })
-      if (data.length === 0) break
-
-      for (const raw of data) {
-        const isPR = !!raw.pull_request
-        testerItems.push({
-          id:            raw.id,
-          number:        raw.number,
-          type:          isPR ? 'pr' : 'issue',
-          title:         raw.title,
-          body:          (raw.body ?? '').slice(0, BODY_MAX),
-          url:           raw.html_url,
-          createdAt:     raw.created_at,
-          updatedAt:     raw.updated_at ?? raw.created_at,
-          commentsCount: raw.comments,
-          reactionCount: raw.reactions?.total_count ?? 0,
-          labels:        raw.labels
-            .filter((l) => typeof l === 'object')
-            .map((l) => ({ name: l.name ?? '', color: l.color ?? '888888' })),
-          repo: {
-            name:     repo.name,
-            fullName: repo.full_name,
-            language: repo.language ?? null,
-            url:      repo.html_url,
-          },
-          assignees: (raw.assignees ?? []).map((a) => ({
-            login:     a.login,
-            avatarUrl: a.avatar_url,
-            url:       a.html_url,
-          })),
-          author: {
-            login:     raw.user?.login ?? 'unknown',
-            avatarUrl: raw.user?.avatar_url ?? '',
-            url:       raw.user?.html_url ?? '',
-          },
-        })
-      }
-
-      if (data.length < 100) break
-      page++
     }
   }
-  console.log(`Found ${testerItems.filter((i) => i.type === 'pr').length} PRs and ${testerItems.filter((i) => i.type === 'issue').length} issues with "${TESTER_LABEL}" label`)
+  console.log(`Found ${testerItems.filter((i) => i.type === 'pr').length} PRs and ${testerItems.filter((i) => i.type === 'issue').length} issues with user-testing label`)
 
   // Sort tester items: PRs first, then issues, newest first within each group
   testerItems.sort((a, b) => {
@@ -178,128 +173,9 @@ async function main() {
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   })
 
-  // ── 3c. Writer issues: all open issues from doc + blog repos ─────────────
-  /** @type {any[]} */
-  const writerIssues = []
-  console.log(`Fetching all open issues from writer repos: ${WRITER_REPOS.join(', ')}`)
-
-  for (const repoName of WRITER_REPOS) {
-    const repo = repos.find((r) => r.name === repoName)
-    if (!repo) { console.warn(`  Writer repo not found: ${repoName}`); continue }
-
-    let page = 1
-    while (true) {
-      const { data } = await octokit.rest.issues.listForRepo({
-        owner:    ORG,
-        repo:     repoName,
-        state:    'open',
-        per_page: 100,
-        page,
-      })
-      if (data.length === 0) break
-
-      for (const raw of data) {
-        if (raw.pull_request) continue // skip PRs
-        writerIssues.push({
-          id:            raw.id,
-          number:        raw.number,
-          type:          'issue',
-          title:         raw.title,
-          body:          (raw.body ?? '').slice(0, BODY_MAX),
-          url:           raw.html_url,
-          createdAt:     raw.created_at,
-          updatedAt:     raw.updated_at ?? raw.created_at,
-          commentsCount: raw.comments,
-          reactionCount: raw.reactions?.total_count ?? 0,
-          labels:        raw.labels
-            .filter((l) => typeof l === 'object')
-            .map((l) => ({ name: l.name ?? '', color: l.color ?? '888888' })),
-          repo: {
-            name:     repo.name,
-            fullName: repo.full_name,
-            language: repo.language ?? null,
-            url:      repo.html_url,
-          },
-          assignees: (raw.assignees ?? []).map((a) => ({
-            login:     a.login,
-            avatarUrl: a.avatar_url,
-            url:       a.html_url,
-          })),
-          author: {
-            login:     raw.user?.login ?? 'unknown',
-            avatarUrl: raw.user?.avatar_url ?? '',
-            url:       raw.user?.html_url ?? '',
-          },
-        })
-      }
-
-      if (data.length < 100) break
-      page++
-    }
-  }
-
-  // Also fetch "copywriting" labeled issues across all org repos
-  const seenWriterIds = new Set(writerIssues.map((i) => i.id))
-  console.log(`Fetching "${COPYWRITING_LABEL}" issues across org`)
-  for (const repo of repos) {
-    let page = 1
-    while (true) {
-      const { data } = await octokit.rest.issues.listForRepo({
-        owner:    ORG,
-        repo:     repo.name,
-        labels:   COPYWRITING_LABEL,
-        state:    'open',
-        per_page: 100,
-        page,
-      })
-      if (data.length === 0) break
-      for (const raw of data) {
-        if (raw.pull_request) continue
-        if (seenWriterIds.has(raw.id)) continue // already included
-        seenWriterIds.add(raw.id)
-        writerIssues.push({
-          id:            raw.id,
-          number:        raw.number,
-          type:          'issue',
-          title:         raw.title,
-          body:          (raw.body ?? '').slice(0, BODY_MAX),
-          url:           raw.html_url,
-          createdAt:     raw.created_at,
-          updatedAt:     raw.updated_at ?? raw.created_at,
-          commentsCount: raw.comments,
-          reactionCount: raw.reactions?.total_count ?? 0,
-          labels:        raw.labels
-            .filter((l) => typeof l === 'object')
-            .map((l) => ({ name: l.name ?? '', color: l.color ?? '888888' })),
-          repo: {
-            name:     repo.name,
-            fullName: repo.full_name,
-            language: repo.language ?? null,
-            url:      repo.html_url,
-          },
-          assignees: (raw.assignees ?? []).map((a) => ({
-            login:     a.login,
-            avatarUrl: a.avatar_url,
-            url:       a.html_url,
-          })),
-          author: {
-            login:     raw.user?.login ?? 'unknown',
-            avatarUrl: raw.user?.avatar_url ?? '',
-            url:       raw.user?.html_url ?? '',
-          },
-        })
-      }
-      if (data.length < 100) break
-      page++
-    }
-  }
-
-  // Sort writer issues: unassigned first, then newest
-  writerIssues.sort((a, b) => {
-    if (a.assignees.length !== b.assignees.length) return a.assignees.length - b.assignees.length
-    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-  })
-  console.log(`Found ${writerIssues.length} open writer issues (doc/blog repos + "${COPYWRITING_LABEL}" label)`)
+  // ── 3c. Writer issues: "good first issue" items from doc + blog repos ───────
+  const writerIssues = issues.filter((i) => WRITER_REPOS.includes(i.repo.name))
+  console.log(`Found ${writerIssues.length} writer issues from ${WRITER_REPOS.join(', ')}`)
 
   // ── 4. Build repo list ─────────────────────────────────────────────────────
   const reposWithIssues = repos
@@ -329,7 +205,12 @@ async function main() {
   const json = JSON.stringify(output, null, 2)
   if (existsSync(OUT)) {
     const existing = readFileSync(OUT, 'utf8')
-    const strip = (s) => s.replace(/"lastUpdated":\s*"[^"]+"/g, '"lastUpdated":""')
+    const strip = (s) =>
+      s
+        .replace(/"lastUpdated":\s*"[^"]+"/g,  '"lastUpdated":""')
+        .replace(/"updatedAt":\s*"[^"]+"/g,    '"updatedAt":""')
+        .replace(/"commentsCount":\s*\d+/g,    '"commentsCount":0')
+        .replace(/"reactionCount":\s*\d+/g,    '"reactionCount":0')
     if (strip(existing) === strip(json)) {
       console.log('No changes detected — skipping deploy')
       process.exit(1) // signals workflow to skip build step
