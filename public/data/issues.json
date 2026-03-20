@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-03-20T01:25:05.721Z",
-  "totalIssues": 17,
+  "lastUpdated": "2026-03-20T06:45:19.232Z",
+  "totalIssues": 16,
   "repoCount": 5,
   "repos": [
     {
@@ -225,36 +225,6 @@
         "login": "pavlenex",
         "avatarUrl": "https://avatars.githubusercontent.com/u/36959754?v=4",
         "url": "https://github.com/pavlenex"
-      }
-    },
-    {
-      "id": 4081311843,
-      "number": 7246,
-      "type": "issue",
-      "title": "[Bug]: store dashboard: wallet balance switch broken",
-      "body": "### What is your BTCPay version?\n\nBTCPay Server v2.3.6 (at least also in 2.3.5)\n\n### How did you deploy BTCPay Server?\n\ndocker\n\n### What happened?\n\nOn the store dashboard wallet balance we have a toggle between 1W 1M and 1Y. When you switch to 1W or 1Y it always shows 21. Jan, 21. Jan on the timeline. Also when you click back to 1W it does not update the screen to show March dates again but stays broken. Only reload fixes screen display.\n\nThis also happens on stores with more transactions than what I have in the screenshots below.\n\nImportant: the graphic updates just fine, only the x-axis date",
-      "url": "https://github.com/btcpayserver/btcpayserver/issues/7246",
-      "createdAt": "2026-03-16T09:34:18Z",
-      "updatedAt": "2026-03-17T04:21:13Z",
-      "commentsCount": 2,
-      "reactionCount": 2,
-      "labels": [
-        {
-          "name": "good first issue",
-          "color": "3de570"
-        }
-      ],
-      "repo": {
-        "name": "btcpayserver",
-        "fullName": "btcpayserver/btcpayserver",
-        "language": "C#",
-        "url": "https://github.com/btcpayserver/btcpayserver"
-      },
-      "assignees": [],
-      "author": {
-        "login": "ndeet",
-        "avatarUrl": "https://avatars.githubusercontent.com/u/1136761?v=4",
-        "url": "https://github.com/ndeet"
       }
     },
     {
@@ -636,72 +606,6 @@
   ],
   "testerItems": [
     {
-      "id": 4087292393,
-      "number": 7247,
-      "type": "pr",
-      "title": "fix: store dashboard wallet balance chart and numbers widget",
-      "body": "closes #7246 \r\n\r\n\r\nhttps://github.com/user-attachments/assets/fdda35d0-e20e-4aed-b575-535868b2547b\r\n\r\n\r\n",
-      "url": "https://github.com/btcpayserver/btcpayserver/pull/7247",
-      "createdAt": "2026-03-17T09:31:07Z",
-      "updatedAt": "2026-03-19T14:36:32Z",
-      "commentsCount": 5,
-      "reactionCount": 1,
-      "labels": [
-        {
-          "name": "User Testing",
-          "color": "F8ADDA"
-        }
-      ],
-      "repo": {
-        "name": "btcpayserver",
-        "fullName": "btcpayserver/btcpayserver",
-        "language": "C#",
-        "url": "https://github.com/btcpayserver/btcpayserver"
-      },
-      "assignees": [],
-      "author": {
-        "login": "Abhijay007",
-        "avatarUrl": "https://avatars.githubusercontent.com/u/64387054?v=4",
-        "url": "https://github.com/Abhijay007"
-      }
-    },
-    {
-      "id": 4051110731,
-      "number": 7226,
-      "type": "pr",
-      "title": "show payment method on receipt",
-      "body": "Resolve #7174 \r\n\r\n<img width=\"697\" height=\"581\" alt=\"image\" src=\"https://github.com/user-attachments/assets/9718d2e2-af0d-486c-bc76-d3feeedfe54a\" />\r\n\r\n\r\n@dstrukt  what do you think?\r\n",
-      "url": "https://github.com/btcpayserver/btcpayserver/pull/7226",
-      "createdAt": "2026-03-10T11:22:40Z",
-      "updatedAt": "2026-03-16T14:39:34Z",
-      "commentsCount": 3,
-      "reactionCount": 1,
-      "labels": [
-        {
-          "name": "User Testing",
-          "color": "F8ADDA"
-        }
-      ],
-      "repo": {
-        "name": "btcpayserver",
-        "fullName": "btcpayserver/btcpayserver",
-        "language": "C#",
-        "url": "https://github.com/btcpayserver/btcpayserver"
-      },
-      "assignees": [
-        {
-          "login": "dstrukt",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/6250771?v=4",
-          "url": "https://github.com/dstrukt"
-        }
-      ],
-      "author": {
-        "login": "TChukwuleta",
-        "avatarUrl": "https://avatars.githubusercontent.com/u/47084273?v=4",
-        "url": "https://github.com/TChukwuleta"
-      }
-    },
-    {
       "id": 3941153156,
       "number": 7183,
       "type": "pr",
@@ -739,8 +643,8 @@
       "body": "## Summary\r\nAdds invoice‑style search and date filtering to the wallet transactions view, so users can quickly locate transactions by TXID or time range. The UI mirrors the invoice/payment request patterns and filters apply consistently to infinite scroll and exports.\r\n\r\n## Problem\r\nPer #7091 and #7092 (and #3954), wallet transactions lacked:\r\n- A search bar for transaction IDs (and related metadata)\r\n- Date filtering controls consistent with invoices/payment requests\r\n- Combined filter support when paging or exporting\r\n\r\nThis made it harder to locate specific transactions and created UX incon",
       "url": "https://github.com/btcpayserver/btcpayserver/pull/7133",
       "createdAt": "2026-01-23T05:57:10Z",
-      "updatedAt": "2026-03-17T10:33:30Z",
-      "commentsCount": 4,
+      "updatedAt": "2026-03-20T02:23:51Z",
+      "commentsCount": 5,
       "reactionCount": 0,
       "labels": [
         {
