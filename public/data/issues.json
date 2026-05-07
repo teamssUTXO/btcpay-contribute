@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-07T13:48:49.037Z",
+  "lastUpdated": "2026-05-07T19:29:11.232Z",
   "totalIssues": 12,
   "repoCount": 6,
   "repos": [
@@ -20,7 +20,7 @@
         "point-of-sale",
         "selfhosted"
       ],
-      "stars": 7549
+      "stars": 7552
     },
     {
       "id": 101657836,
@@ -193,8 +193,8 @@
       "body": "## Description \n\nOn /admin/plugins, the Email Primary Owners button generates a different email list depending on the current table page. It should include primary owners from all plugins matching the current filters, not just the items shown on the current page.",
       "url": "https://github.com/btcpayserver/btcpayserver-plugin-builder/issues/185",
       "createdAt": "2026-03-27T13:52:15Z",
-      "updatedAt": "2026-05-06T12:03:48Z",
-      "commentsCount": 2,
+      "updatedAt": "2026-05-07T15:32:16Z",
+      "commentsCount": 3,
       "reactionCount": 0,
       "labels": [
         {
