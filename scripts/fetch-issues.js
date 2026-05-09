@@ -25,7 +25,8 @@ const ORG             = 'btcpayserver'
 const LABEL           = 'good first issue'
 const TESTER_LABEL_RE = /user[-\s]testing/i
 const TESTER_LABELS   = ['User Testing', 'User-Testing']
-const WRITER_REPOS    = ['btcpayserver-doc', 'blog']
+const WRITER_REPOS    = ['btcpayserver-doc', 'blog', 'btcpayserver-translator']
+const WRITER_LABEL_NAME = 'recruitment'
 const OUT             = resolve(__dirname, '../public/data/issues.json')
 const BODY_MAX        = 600
 
@@ -60,7 +61,7 @@ async function main() {
       const { data } = await octokit.rest.issues.listForRepo({
         owner: ORG,
         repo:  repo.name,
-        labels: LABEL,
+        labels: repo.name === 'btcpayserver-translator' ? WRITER_LABEL_NAME : LABEL,
         state:  'open',
         per_page: 100,
         page,
@@ -173,7 +174,7 @@ async function main() {
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   })
 
-  // ── 3c. Writer issues: "good first issue" items from doc + blog repos ───────
+  // ── 3c. Writer issues: docs/blog + translator recruitment ─────────────────
   const writerIssues = issues.filter((i) => WRITER_REPOS.includes(i.repo.name))
   console.log(`Found ${writerIssues.length} writer issues from ${WRITER_REPOS.join(', ')}`)
 
@@ -205,6 +206,7 @@ async function main() {
   const json = JSON.stringify(output, null, 2)
   if (existsSync(OUT)) {
     const existing = readFileSync(OUT, 'utf8')
+    /** @param {string} s */
     const strip = (s) =>
       s
         .replace(/"lastUpdated":\s*"[^"]+"/g,  '"lastUpdated":""')
